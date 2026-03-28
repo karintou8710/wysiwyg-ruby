@@ -1,16 +1,14 @@
 import type { Editor } from '@tiptap/react'
 import { BubbleMenu } from '@tiptap/react/menus'
-import type { RubyDraft } from './types'
-
 type EditorBubbleMenuProps = {
   editor: Editor
-  rubyDraft: RubyDraft | null
+  isRubyModalOpen: boolean
   onOpenRubyModal: () => void
 }
 
 function EditorBubbleMenu({
   editor,
-  rubyDraft,
+  isRubyModalOpen,
   onOpenRubyModal,
 }: EditorBubbleMenuProps) {
   return (
@@ -21,7 +19,7 @@ function EditorBubbleMenu({
       shouldShow={({ editor: currentEditor, state }) => {
         const { empty } = state.selection
 
-        return !rubyDraft && !empty && currentEditor.isEditable
+        return !isRubyModalOpen && !empty && currentEditor.isEditable
       }}
     >
       <button

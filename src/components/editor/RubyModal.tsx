@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react'
 import type { RubyDraft } from './types'
 
 type RubyModalProps = {
-  draft: RubyDraft
+  open: boolean
+  draft: RubyDraft | null
   reading: string
   onChangeReading: (value: string) => void
   onClose: () => void
@@ -10,6 +11,7 @@ type RubyModalProps = {
 }
 
 function RubyModal({
+  open,
   draft,
   reading,
   onChangeReading,
@@ -19,9 +21,17 @@ function RubyModal({
   const readingInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
+    if (!open) {
+      return
+    }
+
     readingInputRef.current?.focus()
     readingInputRef.current?.select()
-  }, [])
+  }, [open])
+
+  if (!open || !draft) {
+    return null
+  }
 
   return (
     <div className="ruby-modal-backdrop" onClick={onClose} role="presentation">

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Bold from '@tiptap/extension-bold'
 import Document from '@tiptap/extension-document'
 import Paragraph from '@tiptap/extension-paragraph'
@@ -8,15 +7,22 @@ import { EditorContent, useEditor } from '@tiptap/react'
 import './Editor.css'
 import EditorBubbleMenu from './editor/EditorBubbleMenu'
 import RubyModal from './editor/RubyModal'
-import type { RubyDraft } from './editor/types'
+import useRubyModal from './editor/useRubyModal'
 import Ruby from './extensions/Ruby'
 
 function Editor() {
-  const [rubyDraft, setRubyDraft] = useState<RubyDraft | null>(null)
-  const [reading, setReading] = useState('')
   const editor = useEditor({
     extensions: [Document, Paragraph, Text, Bold, Ruby, UndoRedo],
-    content: '<p><ruby>開発<rt>かいはつ</rt></ruby>のテスト</p>',
+    content: `
+      <p><ruby>吾輩<rt>わがはい</rt></ruby>は猫である。名前はまだ無い。</p>
+      <p>どこで<ruby>生<rt>う</rt></ruby>れたかとんと<ruby>見当<rt>けんとう</rt></ruby>がつかぬ。何でも<ruby>薄暗<rt>うすぐら</rt></ruby>いじめじめした所でニャーニャー泣いていた事だけは記憶している。</p>
+      <p><ruby>吾輩<rt>わがはい</rt></ruby>はここで始めて人間というものを見た。しかもあとで聞くとそれは<ruby>書生<rt>しょせい</rt></ruby>という人間中で一番<ruby>獰悪<rt>どうあく</rt></ruby>な<ruby>種族<rt>しゅぞく</rt></ruby>であったそうだ。</p>
+      <p>この<ruby>書生<rt>しょせい</rt></ruby>というのは時々我々を<ruby>捕<rt>つか</rt></ruby>えて<ruby>煮<rt>に</rt></ruby>て食うという話である。しかしその当時は何という考もなかったから別段恐しいとも思わなかった。</p>
+      <p>ただ彼の<ruby>掌<rt>てのひら</rt></ruby>に載せられてスーと持ち上げられた時、何だかフワフワした感じがあったばかりである。<ruby>掌<rt>てのひら</rt></ruby>の上で少し落ちついて<ruby>書生<rt>しょせい</rt></ruby>の顔を見たのが、いわゆる人間というものの見始であろう。</p>
+      <p>この時妙なものだと思った感じが今でも残っている。第一毛をもって装飾されべきはずの顔がつるつるして、まるで<ruby>薬缶<rt>やかん</rt></ruby>だ。</p>
+      <p>その後猫にもだいぶ<ruby>逢<rt>あ</rt></ruby>ったが、こんな<ruby>片輪<rt>かたわ</rt></ruby>には一度も出会した事がない。のみならず顔のまん中があまりに<ruby>突起<rt>とっき</rt></ruby>している。</p>
+      <p>そうしてその穴の中から時々ぷうぷうと煙を吹く。どうも<ruby>咽<rt>む</rt></ruby>せぽくて実に弱った。これが人間の飲む<ruby>煙草<rt>たばこ</rt></ruby>というものである事は、ようやくこの頃知った。</p>
+    `,
     immediatelyRender: false,
     editorProps: {
       attributes: {
@@ -26,51 +32,15 @@ function Editor() {
       },
     },
   })
-
-  const openRubyModal = () => {
-    if (!editor) {
-      return
-    }
-
-    const { from, to, empty } = editor.state.selection
-
-    if (empty) {
-      return
-    }
-
-    const text = editor.state.doc.textBetween(from, to, '')
-
-    if (!text.trim()) {
-      return
-    }
-
-    setRubyDraft({ from, to, text })
-    setReading('')
-  }
-
-  const closeRubyModal = () => {
-    setRubyDraft(null)
-    setReading('')
-    editor?.commands.focus()
-  }
-
-  const submitRuby = () => {
-    if (!editor || !rubyDraft || !reading.trim()) {
-      return
-    }
-
-    editor
-      .chain()
-      .focus()
-      .setTextSelection({ from: rubyDraft.from, to: rubyDraft.to })
-      .insertRuby({
-        text: rubyDraft.text,
-        reading: reading.trim(),
-      })
-      .run()
-
-    closeRubyModal()
-  }
+  const {
+    isOpen,
+    rubyDraft,
+    reading,
+    setReading,
+    openRubyModal,
+    closeRubyModal,
+    submitRuby,
+  } = useRubyModal(editor)
 
   return (
     <>
@@ -78,22 +48,21 @@ function Editor() {
         {editor ? (
           <EditorBubbleMenu
             editor={editor}
-            rubyDraft={rubyDraft}
+            isRubyModalOpen={isOpen}
             onOpenRubyModal={openRubyModal}
           />
         ) : null}
         <EditorContent editor={editor} />
       </div>
 
-      {rubyDraft ? (
-        <RubyModal
-          draft={rubyDraft}
-          reading={reading}
-          onChangeReading={setReading}
-          onClose={closeRubyModal}
-          onSubmit={submitRuby}
-        />
-      ) : null}
+      <RubyModal
+        open={isOpen}
+        draft={rubyDraft}
+        reading={reading}
+        onChangeReading={setReading}
+        onClose={closeRubyModal}
+        onSubmit={submitRuby}
+      />
     </>
   )
 }
