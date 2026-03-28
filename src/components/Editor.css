@@ -1,8 +1,5 @@
-.editor {
+.editor-shell {
   width: min(720px, 100%);
-  min-height: 360px;
-  padding: 28px 32px;
-  box-sizing: border-box;
   border: 1px solid #d6d2cc;
   border-radius: 20px;
   background:
@@ -10,26 +7,13 @@
   box-shadow:
     0 18px 40px rgba(28, 24, 19, 0.08),
     0 2px 10px rgba(28, 24, 19, 0.04);
-  outline: none;
-  color: #2b2723;
-  font:
-    400 18px/1.75 "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
-    Georgia, serif;
-  letter-spacing: 0.01em;
-  caret-color: #9a3412;
   transition:
     border-color 160ms ease,
     box-shadow 160ms ease,
     transform 160ms ease;
 }
 
-.editor:empty::before {
-  content: attr(data-placeholder);
-  color: #a8a099;
-  pointer-events: none;
-}
-
-.editor:focus {
+.editor-shell:focus-within {
   border-color: #c97342;
   box-shadow:
     0 22px 48px rgba(28, 24, 19, 0.12),
@@ -37,19 +21,31 @@
   transform: translateY(-1px);
 }
 
-.editor > *:first-child {
-  margin-top: 0;
+.editor {
+  min-height: 360px;
+  padding: 28px 32px;
+  box-sizing: border-box;
+  outline: none;
+  color: #2b2723;
+  font:
+    400 18px/1.75 "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+    Georgia, serif;
+  letter-spacing: 0.01em;
+  caret-color: #9a3412;
 }
 
-.editor > *:last-child {
-  margin-bottom: 0;
+.editor p {
+  margin: 0;
 }
 
 @media (max-width: 768px) {
+  .editor-shell {
+    border-radius: 16px;
+  }
+
   .editor {
     min-height: 300px;
     padding: 22px 20px;
-    border-radius: 16px;
     font-size: 17px;
   }
 }
