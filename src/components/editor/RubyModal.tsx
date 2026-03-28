@@ -46,10 +46,10 @@ function RubyModal({
         aria-modal="true"
         aria-labelledby="ruby-modal-title"
       >
-        <p className={styles.rubyModalLabel}>Selected text</p>
+        <p className={styles.rubyModalLabel}>選択中の文字</p>
         <p className={styles.rubyModalText}>{draft.text}</p>
         <label className={styles.rubyModalField} htmlFor="ruby-reading">
-          <span id="ruby-modal-title">Reading</span>
+          <span id="ruby-modal-title">読み</span>
           <input
             id="ruby-reading"
             ref={readingInputRef}
@@ -66,7 +66,7 @@ function RubyModal({
           />
         </label>
         <div className={styles.rubyModalPreview}>
-          <p className={styles.rubyModalLabel}>Preview</p>
+          <p className={styles.rubyModalLabel}>プレビュー</p>
           <div className={styles.rubyModalPreviewCard}>
             <ruby
               className={
@@ -82,7 +82,7 @@ function RubyModal({
         </div>
         <div className={styles.rubyModalActions}>
           <button type="button" onClick={onClose}>
-            Cancel
+            キャンセル
           </button>
           <button
             type="button"
@@ -90,7 +90,7 @@ function RubyModal({
             disabled={!reading.trim()}
             onClick={onSubmit}
           >
-            Add ruby
+            ルビを追加
           </button>
         </div>
       </div>

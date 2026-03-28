@@ -3,6 +3,46 @@
   display: grid;
   justify-items: center;
   align-content: start;
+  gap: 24px;
   padding: 32px 24px 56px;
   box-sizing: border-box;
+}
+
+.app-intro {
+  width: min(720px, 100%);
+  display: grid;
+  gap: 10px;
+}
+
+.app-eyebrow {
+  margin: 0;
+  color: #8a5a3b;
+  font: 600 12px/1.2 system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.app-intro h1 {
+  margin: 0;
+  color: #241a14;
+  font:
+    600 32px/1.2 "Hiragino Mincho ProN", "Yu Mincho", "YuMincho",
+    "Iowan Old Style", serif;
+}
+
+.app-description {
+  margin: 0;
+  color: #5a473c;
+  font: 400 15px/1.8 system-ui, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .app {
+    gap: 20px;
+    padding-top: 24px;
+  }
+
+  .app-intro h1 {
+    font-size: 26px;
+  }
 }

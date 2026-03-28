@@ -28,7 +28,7 @@ function Editor() {
       attributes: {
         class: styles.editor,
         spellcheck: 'false',
-        'aria-label': 'Editor',
+        'aria-label': 'エディタ',
       },
     },
   })

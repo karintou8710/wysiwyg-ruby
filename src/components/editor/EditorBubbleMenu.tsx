@@ -49,8 +49,8 @@ function EditorBubbleMenu({
       <button
         type="button"
         className={boldButtonClassName}
-        aria-label="Bold"
-        title="Bold"
+        aria-label="太字"
+        title="太字"
         onMouseDown={(event) => {
           event.preventDefault()
         }}
@@ -63,8 +63,8 @@ function EditorBubbleMenu({
       <button
         type="button"
         className={rubyButtonClassName}
-        aria-label="Ruby"
-        title="Ruby"
+        aria-label="ルビ"
+        title="ルビ"
         onMouseDown={(event) => {
           event.preventDefault()
         }}
