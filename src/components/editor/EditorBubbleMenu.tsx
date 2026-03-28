@@ -1,6 +1,7 @@
 import { useEditorState, type Editor } from '@tiptap/react'
 import { BubbleMenu } from '@tiptap/react/menus'
 import { TbBold, TbLanguageHiragana } from 'react-icons/tb'
+import styles from './EditorBubbleMenu.module.css'
 
 type EditorBubbleMenuProps = {
   editor: Editor | null
@@ -23,6 +24,12 @@ function EditorBubbleMenu({
     isBoldActive: false,
     isRubyActive: false,
   }
+  const boldButtonClassName = activeState.isBoldActive
+    ? `${styles.bubbleMenuButton} ${styles.isActive}`
+    : styles.bubbleMenuButton
+  const rubyButtonClassName = activeState.isRubyActive
+    ? `${styles.bubbleMenuButton} ${styles.isActive}`
+    : styles.bubbleMenuButton
 
   if (!editor || isRubyModalOpen) {
     return null
@@ -31,7 +38,7 @@ function EditorBubbleMenu({
   return (
     <BubbleMenu
       editor={editor}
-      className="bubble-menu"
+      className={styles.bubbleMenu}
       options={{ placement: 'top', offset: 8 }}
       shouldShow={({ editor: currentEditor, state }) => {
         const { empty } = state.selection
@@ -41,7 +48,7 @@ function EditorBubbleMenu({
     >
       <button
         type="button"
-        className={activeState.isBoldActive ? 'is-active' : ''}
+        className={boldButtonClassName}
         aria-label="Bold"
         title="Bold"
         onMouseDown={(event) => {
@@ -55,7 +62,7 @@ function EditorBubbleMenu({
       </button>
       <button
         type="button"
-        className={activeState.isRubyActive ? 'is-active' : ''}
+        className={rubyButtonClassName}
         aria-label="Ruby"
         title="Ruby"
         onMouseDown={(event) => {

@@ -4,7 +4,7 @@ import Paragraph from '@tiptap/extension-paragraph'
 import Text from '@tiptap/extension-text'
 import { UndoRedo } from '@tiptap/extensions'
 import { EditorContent, useEditor } from '@tiptap/react'
-import './Editor.css'
+import styles from './Editor.module.css'
 import EditorBubbleMenu from './editor/EditorBubbleMenu'
 import RubyModal from './editor/RubyModal'
 import useRubyModal from './editor/useRubyModal'
@@ -26,7 +26,7 @@ function Editor() {
     immediatelyRender: false,
     editorProps: {
       attributes: {
-        class: 'editor',
+        class: styles.editor,
         spellcheck: 'false',
         'aria-label': 'Editor',
       },
@@ -44,7 +44,7 @@ function Editor() {
 
   return (
     <>
-      <div className="editor-shell">
+      <div className={styles.editorShell}>
         <EditorBubbleMenu
           editor={editor}
           isRubyModalOpen={isOpen}

@@ -1,0 +1,41 @@
+.bubbleMenu {
+  display: inline-flex;
+  padding: 6px;
+  border: 1px solid rgba(43, 39, 35, 0.12);
+  border-radius: 12px;
+  background: rgba(34, 30, 27, 0.92);
+  box-shadow: 0 12px 30px rgba(16, 12, 9, 0.18);
+  backdrop-filter: blur(12px);
+}
+
+.bubbleMenuButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0;
+  background: transparent;
+  color: #f7f2eb;
+  cursor: pointer;
+}
+
+.bubbleMenuButton svg {
+  display: block;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.bubbleMenuButton:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.isActive {}
+
+.bubbleMenuButton.isActive {
+  background: #c97342;
+  color: #fffaf5;
+}
