@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { NodeSelection } from '@tiptap/pm/state'
 import type { Editor } from '@tiptap/react'
 import type { RubyDraft } from './types'
 
@@ -12,9 +13,26 @@ function useRubyModal(editor: Editor | null) {
       return
     }
 
-    const { from, to, empty } = editor.state.selection
+    const { selection } = editor.state
+    const { from, to, empty } = selection
 
     if (empty) {
+      return
+    }
+
+    if (
+      selection instanceof NodeSelection &&
+      selection.node.type.name === 'ruby'
+    ) {
+      const text = String(selection.node.attrs.text ?? '').trim()
+
+      if (!text) {
+        return
+      }
+
+      setRubyDraft({ from, to, text })
+      setReading(String(selection.node.attrs.reading ?? ''))
+      setIsOpen(true)
       return
     }
 
