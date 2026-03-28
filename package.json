@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tiptap/extension-bold": "^3.21.0",
     "@tiptap/extension-document": "^3.21.0",
     "@tiptap/extension-paragraph": "^3.21.0",
     "@tiptap/extension-text": "^3.21.0",
+    "@tiptap/extensions": "^3.21.0",
     "@tiptap/pm": "^3.21.0",
     "@tiptap/react": "^3.21.0",
     "react": "^19.2.4",

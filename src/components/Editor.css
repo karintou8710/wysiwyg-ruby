@@ -13,6 +13,36 @@
     transform 160ms ease;
 }
 
+.bubble-menu {
+  display: inline-flex;
+  padding: 6px;
+  border: 1px solid rgba(43, 39, 35, 0.12);
+  border-radius: 12px;
+  background: rgba(34, 30, 27, 0.92);
+  box-shadow: 0 12px 30px rgba(16, 12, 9, 0.18);
+  backdrop-filter: blur(12px);
+}
+
+.bubble-menu button {
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: transparent;
+  color: #f7f2eb;
+  font: 600 13px/1 system-ui, sans-serif;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.bubble-menu button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.bubble-menu button.is-active {
+  background: #c97342;
+  color: #fffaf5;
+}
+
 .editor-shell:focus-within {
   border-color: #c97342;
   box-shadow:
