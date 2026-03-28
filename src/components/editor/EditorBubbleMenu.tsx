@@ -43,7 +43,7 @@ function EditorBubbleMenu({
       shouldShow={({ editor: currentEditor, state }) => {
         const { empty } = state.selection
 
-        return !empty && currentEditor.isEditable
+        return !empty && currentEditor.isEditable && currentEditor.isFocused
       }}
     >
       <button

@@ -51,7 +51,7 @@ function useRubyModal(editor: Editor | null) {
     setIsOpen(false)
     setRubyDraft(null)
     setReading('')
-    editor?.commands.focus()
+    editor?.commands.blur()
   }
 
   const submitRuby = () => {
