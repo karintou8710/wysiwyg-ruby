@@ -19,6 +19,7 @@ function RubyModal({
   onSubmit,
 }: RubyModalProps) {
   const readingInputRef = useRef<HTMLInputElement>(null)
+  const previewReading = reading.trim()
 
   useEffect(() => {
     if (!open) {
@@ -63,6 +64,15 @@ function RubyModal({
             }}
           />
         </label>
+        <div className="ruby-modal-preview">
+          <p className="ruby-modal-label">Preview</p>
+          <div className="ruby-modal-preview-card">
+            <ruby className={`ruby-modal-preview-ruby${!previewReading ? ' is-empty' : ''}`}>
+              {draft.text}
+              <rt>{previewReading || 'よみ'}</rt>
+            </ruby>
+          </div>
+        </div>
         <div className="ruby-modal-actions">
           <button type="button" onClick={onClose}>
             Cancel

@@ -59,83 +59,139 @@
   display: grid;
   place-items: center;
   padding: 24px;
-  background: rgba(31, 26, 21, 0.22);
-  backdrop-filter: blur(8px);
+  background: rgba(35, 25, 18, 0.18);
   z-index: 20;
 }
 
 .ruby-modal {
   width: min(420px, 100%);
-  padding: 22px;
-  border: 1px solid rgba(43, 39, 35, 0.1);
-  border-radius: 20px;
-  background: rgba(255, 252, 247, 0.96);
-  box-shadow: 0 24px 60px rgba(28, 24, 19, 0.16);
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid #d6c8bc;
+  border-radius: 28px;
+  background: #fef7f2;
 }
 
 .ruby-modal-label {
-  margin: 0 0 6px;
-  color: #7b7269;
-  font: 600 12px/1.2 system-ui, sans-serif;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  margin: 0;
+  color: #7d5d49;
+  font: 500 12px/1.3 system-ui, sans-serif;
+  letter-spacing: 0.02em;
 }
 
 .ruby-modal-text {
-  margin: 0 0 18px;
-  color: #2b2723;
+  margin: -6px 0 0;
+  color: #231a14;
   font:
-    400 24px/1.4 "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+    400 24px/1.2 "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
     Georgia, serif;
 }
 
 .ruby-modal-field {
   display: grid;
-  gap: 8px;
-  margin-bottom: 18px;
+  gap: 6px;
 }
 
 .ruby-modal-field span {
-  color: #4d453f;
-  font: 600 13px/1.2 system-ui, sans-serif;
+  color: #7d5d49;
+  font: 500 12px/1.3 system-ui, sans-serif;
+  letter-spacing: 0.02em;
 }
 
 .ruby-modal-field input {
   width: 100%;
-  padding: 11px 13px;
+  height: 56px;
+  padding: 0 15px;
   box-sizing: border-box;
-  border: 1px solid #d6d2cc;
-  border-radius: 12px;
-  background: #fff;
-  color: #2b2723;
+  border: 1px solid #8f6f5c;
+  border-radius: 16px;
+  background: #f7ede6;
+  color: #231a14;
   font: 500 15px/1.2 system-ui, sans-serif;
   outline: none;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
 }
 
 .ruby-modal-field input:focus {
-  border-color: #c97342;
-  box-shadow: 0 0 0 4px rgba(201, 115, 66, 0.12);
+  border-color: #9a3412;
+  background: #fffaf7;
+}
+
+.ruby-modal-preview {
+  display: grid;
+  gap: 8px;
+}
+
+.ruby-modal-preview-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 16px 16px;
+  border: 1px solid #e3d5ca;
+  border-radius: 20px;
+  background: #fff8f3;
+  color: #231a14;
+}
+
+.ruby-modal-preview-ruby {
+  ruby-align: center;
+  ruby-overhang: none;
+  ruby-position: over;
+  text-align: center;
+  font:
+    400 24px/1.1 "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+    Georgia, serif;
+}
+
+.ruby-modal-preview-ruby rt {
+  display: ruby-text;
+  color: #7d5d49;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.ruby-modal-preview-ruby.is-empty rt {
+  opacity: 0.45;
 }
 
 .ruby-modal-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 12px;
 }
 
 .ruby-modal-actions button {
+  min-width: 88px;
+  height: 40px;
   border: 0;
-  border-radius: 12px;
-  padding: 10px 14px;
-  background: rgba(43, 39, 35, 0.08);
-  color: #2b2723;
-  font: 600 13px/1 system-ui, sans-serif;
+  border-radius: 999px;
+  padding: 0 18px;
+  background: transparent;
+  color: #8a3c14;
+  font: 600 14px/1 system-ui, sans-serif;
   cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    opacity 160ms ease;
+}
+
+.ruby-modal-actions button:hover {
+  background: rgba(154, 52, 18, 0.08);
 }
 
 .ruby-modal-actions button.is-primary {
-  background: #c97342;
-  color: #fffaf5;
+  background: #8a3c14;
+  color: #fff8f4;
+}
+
+.ruby-modal-actions button.is-primary:hover {
+  background: #733111;
 }
 
 .ruby-modal-actions button:disabled {
