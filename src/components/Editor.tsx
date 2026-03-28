@@ -45,13 +45,11 @@ function Editor() {
   return (
     <>
       <div className="editor-shell">
-        {editor ? (
-          <EditorBubbleMenu
-            editor={editor}
-            isRubyModalOpen={isOpen}
-            onOpenRubyModal={openRubyModal}
-          />
-        ) : null}
+        <EditorBubbleMenu
+          editor={editor}
+          isRubyModalOpen={isOpen}
+          onOpenRubyModal={openRubyModal}
+        />
         <EditorContent editor={editor} />
       </div>
 

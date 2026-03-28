@@ -1,7 +1,8 @@
 import type { Editor } from '@tiptap/react'
 import { BubbleMenu } from '@tiptap/react/menus'
+
 type EditorBubbleMenuProps = {
-  editor: Editor
+  editor: Editor | null
   isRubyModalOpen: boolean
   onOpenRubyModal: () => void
 }
@@ -11,6 +12,10 @@ function EditorBubbleMenu({
   isRubyModalOpen,
   onOpenRubyModal,
 }: EditorBubbleMenuProps) {
+  if (!editor) {
+    return null
+  }
+
   return (
     <BubbleMenu
       editor={editor}
