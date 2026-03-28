@@ -38,6 +38,22 @@
   margin: 0;
 }
 
+.editor ruby {
+  ruby-align: center;
+  ruby-position: over;
+}
+
+.editor rt {
+  font-size: 0.65em;
+  color: #7b7269;
+  letter-spacing: 0.02em;
+}
+
+.editor .ProseMirror-selectednode {
+  border-radius: 6px;
+  background: rgba(201, 115, 66, 0.12);
+}
+
 @media (max-width: 768px) {
   .editor-shell {
     border-radius: 16px;
