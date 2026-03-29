@@ -2,8 +2,11 @@
   width: min(720px, 100%);
   border: 1px solid #d6d2cc;
   border-radius: 20px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(249, 246, 241, 0.98));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(249, 246, 241, 0.98)
+  );
   box-shadow:
     0 18px 40px rgba(28, 24, 19, 0.08),
     0 2px 10px rgba(28, 24, 19, 0.04);
@@ -11,6 +14,10 @@
     border-color 160ms ease,
     box-shadow 160ms ease,
     transform 160ms ease;
+}
+
+.editorShellVertical {
+  width: min(960px, 100%);
 }
 
 .editorShell:focus-within {
@@ -21,6 +28,43 @@
   transform: translateY(-1px);
 }
 
+.editorToolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 18px 20px 0;
+}
+
+.toolbarButton {
+  border: 1px solid rgba(138, 90, 59, 0.2);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: rgba(255, 251, 246, 0.92);
+  color: #6e4f3d;
+  font:
+    600 13px/1 system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+
+.toolbarButton:hover {
+  background: rgba(252, 245, 235, 0.98);
+}
+
+.toolbarButtonActive {
+  border-color: rgba(201, 115, 66, 0.24);
+  background: rgba(201, 115, 66, 0.12);
+  color: #9a3412;
+}
+
+.editorViewport {
+  overflow: auto;
+}
+
+.editorViewportVertical {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
 .editor {
   min-height: 360px;
   padding: 28px 32px;
@@ -28,10 +72,22 @@
   outline: none;
   color: #2b2723;
   font:
-    400 18px/1.75 "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
-    Georgia, serif;
+    400 18px/1.75 "Iowan Old Style",
+    "Palatino Linotype",
+    "Book Antiqua",
+    Georgia,
+    serif;
   letter-spacing: 0.01em;
   caret-color: #9a3412;
+}
+
+.editorContentVertical :global(.ProseMirror) {
+  flex: none;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  inline-size: 560px;
+  min-block-size: 100%;
+  block-size: max-content;
 }
 
 .editor p {
@@ -59,9 +115,17 @@
     border-radius: 16px;
   }
 
+  .editorToolbar {
+    padding: 16px 16px 0;
+  }
+
   .editor {
     min-height: 300px;
     padding: 22px 20px;
     font-size: 17px;
+  }
+
+  .editorContentVertical :global(.ProseMirror) {
+    inline-size: 440px;
   }
 }
