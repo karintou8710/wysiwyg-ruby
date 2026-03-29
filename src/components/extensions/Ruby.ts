@@ -34,9 +34,11 @@ const Ruby = Node.create({
     return {
       text: {
         default: '',
+        rendered: false,
       },
       reading: {
         default: '',
+        rendered: false,
       },
     }
   },
