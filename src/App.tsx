@@ -20,7 +20,7 @@ function App() {
         <p className="app-eyebrow">Ruby WYSIWYG Editor</p>
         <h1 id="app-title">日本語のルビを扱える WYSIWYG エディター</h1>
         <p className="app-description">
-          contenteditable 単体と Tiptap を使用したエディターの両方で、ルビの挙動比較ができます。
+          contenteditable 単体と Tiptap を使用したエディターの両方で、ルビ (contenteditable=false) の挙動比較ができます。
         </p>
       </section>
 
