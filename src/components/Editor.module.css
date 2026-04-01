@@ -31,6 +31,7 @@
 .editorToolbar {
   display: flex;
   justify-content: flex-end;
+  gap: 10px;
   padding: 18px 20px 0;
 }
 
@@ -82,12 +83,24 @@
 }
 
 .editorContentVertical :global(.ProseMirror) {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  inline-size: 560px;
+  min-block-size: 100%;
+  block-size: max-content;
+}
+
+.editorVerticalFlow {
   flex: none;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   inline-size: 560px;
   min-block-size: 100%;
   block-size: max-content;
+}
+
+.contentEditable {
+  display: block;
 }
 
 .editor p {
@@ -126,6 +139,10 @@
   }
 
   .editorContentVertical :global(.ProseMirror) {
+    inline-size: 440px;
+  }
+
+  .editorVerticalFlow {
     inline-size: 440px;
   }
 }
